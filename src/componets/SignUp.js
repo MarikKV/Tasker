@@ -49,7 +49,7 @@ export default function SignUp() {
                     if(passGood){
                         console.log('registring new user')
                         addNewUserToDB(name, lastName, email, password);
-                        window.location = '/SignIn'
+                        window.location.hash = '#/SignIn'
                     }
                 }
             }

@@ -39,7 +39,7 @@ export default function SignIn(props) {
                     
                     dispatch(login())
                     dispatch(saveUserInLocalStore(user[0]))
-                    //window.location = '/Tasks';
+                    //window.location.hash = '#/Tasks';
                 }else{
                     setErrorPass(true)
                     setTimeout(()=>{setErrorPass(false)}, 3000)
