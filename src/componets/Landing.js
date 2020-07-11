@@ -28,6 +28,7 @@ export default function Landing() {
         })
         setCompleted(completed)
         setInProgres(inProgres)
+       
     }
     
     useEffect(() => taskInfo(),[])

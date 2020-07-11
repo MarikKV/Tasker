@@ -34,11 +34,11 @@ export const addNewUserToDB = (name, lastName, email, password) => {
     });
 }
 
-export const addNewTaskToDB = (userId, title, deskribe) => {
+export const addNewTaskToDB = (userId, title, describe) => {
     db.collection("todos").doc().set({
         userId: userId,
         title: title,
-        deskribe: deskribe
+        describe: describe
     })
     .then(function() {
         console.log("Task successfully added!");
