@@ -31,6 +31,25 @@
             width: 100%; 
         }
     }
+
+    th, td{
+        text-align: center;
+    }
+    
+    .table_deskribe{
+        width: 50%;
+    }
+    
+    .status_progress{
+        background-color: rgb(255, 196, 0);
+    }
+    .status_done{
+        background-color: lime;
+    }
+    .status_failed{
+        background: red;
+    }
+    
 }
 
 @media screen and (max-width: 800px){
