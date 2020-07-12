@@ -61,7 +61,7 @@ export default function SignUp() {
     return (
         <div>
             {!isLogged ? (
-                <Form className="signIn" onSubmit={handleSubmit}>
+                <Form className="signUp" onSubmit={handleSubmit}>
                     <h1 align="center">Sign Up</h1>
                     <br/>
                     <Row>

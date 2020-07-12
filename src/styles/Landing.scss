@@ -7,9 +7,7 @@
     color: white;
     padding: 20px;
     transition: transform 1s;
-    &:hover{
-        transform: scale(1.02);
-    }
+   
     .infoBlock{
         display: flex;
         flex-direction: column;
@@ -22,5 +20,8 @@
     color: lime;
 }
 .yellow{
-    color: yellow
+    color: yellow;
+}
+.red{
+    color: red;
 }
