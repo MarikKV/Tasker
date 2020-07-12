@@ -8,14 +8,14 @@ export default function Menu() {
     const isLogged = useSelector(state => state.isLogged);
     const dispatch = useDispatch();
     return (
-        <Navbar bg="primary" variant="dark" className="menuFixed">
-            <Navbar.Brand href="#/home">Tasker</Navbar.Brand>
+        <Navbar bg='primary' variant='dark' className='menuFixed'>
+            <Navbar.Brand href="/">Tasker</Navbar.Brand>
             
             {isLogged 
                 ? 
                 <>
                     <Nav className="mr-auto">
-                        <Nav.Link href="#/">Home</Nav.Link>
+                        <Nav.Link href="#/Home">Home</Nav.Link>
                         <Nav.Link href="#/Tasks">Tasks</Nav.Link>
                     </Nav>
                     <Nav.Link href="" onClick={() => dispatch(login())} className='navLink'>Log Out</Nav.Link>

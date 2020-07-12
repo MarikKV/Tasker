@@ -5,12 +5,14 @@ import Landing from "./componets/Landing";
 import Tasks from "./componets/Tasks";
 import SignIn from "./componets/SignIn";
 import SignUp from "./componets/SignUp";
+import Home from "./componets/Home";
 
 function App() {
   return (
     <HashRouter basename='/'>
         <Route path='/' component={Menu}/>
         <Route exact path='/' component={Landing}/>
+        <Route exact path='/Home' component={Home}/>
         <Route exact path='/Tasks' component={Tasks}/>
         <Route exact path='/SignIn' component={SignIn}/>
         <Route exact path='/SignUp' component={SignUp}/>
