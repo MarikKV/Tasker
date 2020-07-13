@@ -16,7 +16,8 @@ export default function Menu() {
                 <>
                     <Nav className="mr-auto">
                         <Nav.Link href="#/Home">Home</Nav.Link>
-                        <Nav.Link href="#/Tasks">Tasks</Nav.Link>
+                        <Nav.Link href="#/Tasks">My tasks</Nav.Link>
+                        <Nav.Link href="#/SharedTasks">Tasks shared to me</Nav.Link>
                     </Nav>
                     <Nav.Link href="" onClick={() => dispatch(login())} className='navLink'>Log Out</Nav.Link>
                 </>

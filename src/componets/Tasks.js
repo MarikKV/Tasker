@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import AddNewTask from './AddNewTask';
 import { useSelector, useDispatch } from 'react-redux';
 import { getTasks } from '../actions';
-import { getCollectionWhere, editTaskFB } from '../customFunctions';
+import { getCollectionWhere, editTaskFB, getDocById } from '../customFunctions';
 import { db } from '../firebase';
 
 import { Button, Table, Modal, Form } from 'react-bootstrap';
@@ -10,23 +10,27 @@ import '../styles/Tasks.scss';
 
 
 export default function Tasks() {
-    //modal edit task
+    //modal edit task state
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    //for task editing
     const [edit_id, setId] = useState('');
     const [edit_title, setTitle] = useState('');
     const [edit_describe, setDescribe] = useState('');
     const [edit_status, setStatus] = useState('');
 
+    //Saved user data in store
     const saveUserInStore = useSelector(state => state.saveUserInStore);
     const allUserTasks = useSelector(state => state.allUserTasks);
+
+    //togle add task block
     const [showForm, setShowForn] = useState(false)
+
     const dispatch = useDispatch()
 
     useEffect(() => {
-
         db.collection('todos').where('userId', '==', saveUserInStore.id)
         .get()
         .then(snapsot => {
@@ -40,7 +44,7 @@ export default function Tasks() {
             console.log('error getting doc:', error)
         });
         
-    }, []);
+    }, [dispatch, saveUserInStore]);
     
     const deleteTask = (id) => {
         db.collection("todos").doc(id).delete()
@@ -52,46 +56,30 @@ export default function Tasks() {
         });
     }
     const editTask = (id) => {
-        db.collection('todos').doc(id)
-        .get()
-        .then( doc => {
-          if (doc.exists) {
-            let taskData = doc.data()
-            setId(id)
-            setTitle(taskData.title)
-            setDescribe(taskData.describe)
-            setStatus(taskData.status)
+        getDocById('todos', id)
+        .then( res => {
+            setId(id);
+            setTitle(res.title);
+            setDescribe(res.describe);
+            setStatus(res.status);
             handleShow();
-          } else {
-            console.log("No such document!");
-          }
         })
-        .catch( err => {
-          console.log("Error getting document:", err);
-        });
+        .catch( err =>{ console.log(err) })
     }
 
     const saveEditedTask = () => {
-        console.log('try to edit task',edit_id, edit_title, edit_describe, edit_status);
         editTaskFB(edit_id, edit_title, edit_describe, edit_status);
-        gettodos()
-        handleClose()
+        setTimeout(() => {gettodos();handleClose();}, 500);
     }
 
     const gettodos = () => {
-        const alltodos = getCollectionWhere('todos', 'userId', '==', saveUserInStore.id)
-        alltodos.then(
-            res => {
-                console.log(res)
-                dispatch(getTasks(res))
-            },
-            rej => {
-                console.log(rej)
-            }
+        getCollectionWhere('todos', 'userId', '==', saveUserInStore.id)
+        .then(
+            res => dispatch(getTasks(res))
         )
+        .catch( err => console.log(err) )
     }
     const togleAddTask = (data) => {
-        console.log(data)
         setShowForn(!data)
     }
     return (

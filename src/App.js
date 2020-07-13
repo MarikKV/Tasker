@@ -6,6 +6,7 @@ import Tasks from "./componets/Tasks";
 import SignIn from "./componets/SignIn";
 import SignUp from "./componets/SignUp";
 import Home from "./componets/Home";
+import SharedTasks from "./componets/SharedTasks";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route exact path='/' component={Landing}/>
         <Route exact path='/Home' component={Home}/>
         <Route exact path='/Tasks' component={Tasks}/>
+        <Route exact path='/SharedTasks' component={SharedTasks}/>
         <Route exact path='/SignIn' component={SignIn}/>
         <Route exact path='/SignUp' component={SignUp}/>
     </HashRouter>        
@@ -21,3 +23,4 @@ function App() {
 }
 
 export default App;
+ 

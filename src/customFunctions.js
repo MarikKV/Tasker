@@ -16,7 +16,23 @@ export const getCollectionWhere = (collection, field, operator, value) => {
             rej(error)
         });
     })
+}
+export const getDocById = (collection, id,) => {
 
+    return new Promise((res, rej) => {
+        db.collection(collection).doc(id)
+        .get()
+        .then(doc => {
+            if (doc.exists) {
+                res(doc.data())
+            }else{
+                res(null)
+            }
+        })
+        .catch(error => {
+            rej(error)
+        });
+    })
 }
 
 export const addNewUserToDB = (name, lastName, email, password) => {

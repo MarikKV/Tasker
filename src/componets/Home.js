@@ -13,15 +13,11 @@ export default function Home() {
     const [completed, setCompleted] = useState(0);
     const [inProgres, setInProgres] = useState(0);
     const [failed, setFailed] = useState(0);
-
-    const taskInfo = () =>{
+    
+    useEffect(() => {
         setNumOfTusk(allUserTasks.length)
-        let completed = 0;
-        let inProgres = 0;
-        let failed = 0;
-
-        allUserTasks.map(task => {
-            console.log(task)
+        let [completed, inProgres, failed] = [0, 0, 0];
+        allUserTasks.map( task => {
             if(task.status === 'done'){
                 completed++
             } if(task.status === 'in progress'){ 
@@ -29,16 +25,14 @@ export default function Home() {
             } if(task.status === 'failed') {
                 failed++
             }
+            return true
         })
         setCompleted(completed)
         setInProgres(inProgres)
         setFailed(failed)
-    }
-    
-    useEffect(() => taskInfo(),[])
+    }, [allUserTasks])
     return (
         <div>
-            {console.log(allUserTasks)}
             {!isLogged 
                 ? 
                 <h1 align='center'>Please sign in</h1>
