@@ -7,6 +7,7 @@ import SignIn from "./componets/SignIn";
 import SignUp from "./componets/SignUp";
 import Home from "./componets/Home";
 import SharedTasks from "./componets/SharedTasks";
+import About from './componets/About';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route exact path='/SharedTasks' component={SharedTasks}/>
         <Route exact path='/SignIn' component={SignIn}/>
         <Route exact path='/SignUp' component={SignUp}/>
+        <Route exact path='/About' component={About}/>
     </HashRouter>        
   );
 }

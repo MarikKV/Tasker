@@ -12,7 +12,7 @@
         align-items: center;
         justify-content: center; 
         font-size: 40px;
-        color: #fff;
+        color: white;
         background-color: rgb(10, 12, 99);
     }
 
@@ -22,6 +22,19 @@
     }  
     .save{
         border-radius: 0 0 20px 20px;
+    }
+
+    .about{
+        display: block;
+        margin: 40px 0;
+        background-color: rgb(8, 40, 87);
+        text-align: center;
+        padding: 5px 20px;
+        font-size: 30px;
+        border-radius: 5px;
+        color: white;
+        text-decoration: none;
+        cursor: pointer;
     }
 }
 @media screen and (max-width: 600px){

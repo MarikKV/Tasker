@@ -140,7 +140,7 @@ export default function Tasks() {
                         <Form.Control 
                             as="textarea" rows="4"  
                             value={edit_describe} 
-k                            onChange={e => setDescribe(e.target.value)}
+                            onChange={e => setDescribe(e.target.value)}
                         />
 
                         <Form.Label>Status</Form.Label>

@@ -65,8 +65,40 @@ export const addNewTaskToDB = (userId, title, describe) => {
     });
 }
 
+
+export const addNewSharedTaskToDB = (userId, title, describe, sharedTo, from) => {
+    db.collection("sharedTodos").doc().set({
+        userId: userId,
+        title: title,
+        describe: describe,
+        sharedTo: sharedTo,
+        from: from,
+        status: 'not accepted'
+    })
+    .then(function() {
+        console.log("Shared task successfully added!");
+    })
+    .catch(function(error) {
+        console.error("Error adding shered task: ", error);
+    });
+}
+
 export const editTaskFB = (id, title, describe, status) => {
     db.collection("todos").doc(id).update({
+        title: title,
+        describe: describe,
+        status: status
+    })
+    .then(function() {
+        console.log("Task successfully edited!");
+    })
+    .catch(function(error) {
+        console.error("Error edit task: ", error);
+    });
+}
+
+export const editSharedTaskFB = (id, title, describe, status) => {
+    db.collection("sharedTodos").doc(id).update({
         title: title,
         describe: describe,
         status: status

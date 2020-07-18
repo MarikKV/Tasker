@@ -10,6 +10,10 @@ export default function Landing() {
             <div className='landing_box create animate__animated animate__bounceInLeft animate__delay-2s'>Create your tasks</div>
             <div className='landing_box save animate__animated animate__bounceInUp animate__delay-3s'>Save and edit them</div>
 
+            <a 
+                className='about animate__animated animate__fadeIn animate__delay-4s'
+                href='#/About'
+            >About this project</a>
         </div>
     )
 }
